@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>绿野行动 | 守护我们的地球</title>
+    <style>
+        /* --- 基础设置 --- */
+        :root {
+            --primary-color: #2ecc71; /* 鲜绿色 */
+            --secondary-color: #27ae60; /* 深绿色 */
+            --dark-color: #2c3e50;
+            --light-color: #ecf0f1;
+            --text-color: #333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: #fff;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* --- 导航栏 --- */
+        nav {
+            background: #fff;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--secondary-color);
+            display: flex;
+            align-items: center;
+        }
+
+        .logo span {
+            color: var(--dark-color);
+            margin-left: 5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+            transition: 0.3s;
+        }
+
+        .btn {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: var(--secondary-color);
+        }
+
+        /* --- 首屏 Hero Section --- */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1542601906990-b4d3fb7d5b43?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        .hero-btn {
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            border: 2px solid white;
+            background: transparent;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .hero-btn:hover {
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        /* --- 特性/问题板块 --- */
+        .features {
+            padding: 5rem 10%;
+            text-align: center;
+            background-color: var(--light-color);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: var(--dark-color);
+            margin-bottom: 3rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50%;
+            height: 3px;
+            background: var(--primary-color);
+            margin: 10px auto 0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        /* --- 行动指南 --- */
+        .action-call {
+            padding: 5rem 10%;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .action-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .action-text h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--dark-color);
+        }
+
+        .action-image {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .action-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        /* --- 页脚 --- */
+        footer {
+            background: var(--dark-color);
+            color: white;
+            padding: 3rem 10%;
+            text-align: center;
+        }
+
+        .footer-links {
+            margin-top: 1rem;
+        }
+
+        .footer-links a {
+            margin: 0 10px;
+            color: #ccc;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* --- 响应式调整 --- */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none; /* 移动端简化隐藏菜单 */
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">🌿 绿野<span>行动</span></div>
+        <ul class="nav-links">
+            <li><a href="#home">首页</a></li>
+            <li><a href="#issues">环境问题</a></li>
+            <li><a href="#actions">如何行动</a></li>
+            <li><a href="#contact" class="btn">加入我们</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero" id="home">
+        <h1>没有备用的地球</h1>
+        <p>每一片森林的消逝，每一条河流的污染，都在透支我们的未来。从今天开始，通过微小的改变，为下一代守护这片绿色。</p>
+        <button class="hero-btn" onclick="scrollToSection('actions')">立即行动</button>
+    </header>
+
+    <section class="features" id="issues">
+        <h2 class="section-title">为什么这很重要？</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <span class="icon">🌡️</span>
+                <h3>全球变暖</h3>
+                <p>温室气体排放正在导致极端天气频发，冰川融化，海平面上升。</p>
+            </div>
+            <div class="feature-card">
+                <span class="icon">🌊</span>
+                <h3>海洋污染</h3>
+                <p>每年有数百万吨塑料流入海洋，威胁着无数海洋生物的生存。</p>
+            </div>
+            <div class="feature-card">
+                <span class="icon">🌳</span>
+                <h3>生物多样性丧失</h3>
+                <p>森林砍伐导致动植物栖息地减少，物种灭绝速度正在加快。</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="action-call" id="actions">
+        <div class="action-image">
+             <img src="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="种植植物">
+        </div>
+        <div class="action-text">
+            <h2>我们能做什么？</h2>
+            <p>保护环境不需要成为超级英雄，只需要坚持简单的习惯：</p>
+            <br>
+            <ul style="list-style-type: disc; margin-left: 20px;">
+                <li><strong>减少塑料：</strong> 使用可重复使用的购物袋和水杯。</li>
+                <li><strong>低碳出行：</strong> 多乘坐公共交通，骑行或步行。</li>
+                <li><strong>垃圾分类：</strong> 认真做好垃圾分类，促进资源循环利用。</li>
+                <li><strong>节约能源：</strong> 随手关灯，使用节能电器。</li>
+            </ul>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2023 绿野行动公益组织. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="#">隐私政策</a>
+            <a href="#">联系我们</a>
+            <a href="#">捐赠支持</a>
+        </div>
+    </footer>
+
+    <script>
+        // 平滑滚动效果
+        function scrollToSection(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // 简单的交互提示
+        document.querySelector('.btn').addEventListener('click', function(e) {
+            e.preventDefault();
+            alert("感谢您的关注！请发送邮件至 contact@greenearth.org 加入我们。");
+        });
+    </script>
+</body>
+</html>
